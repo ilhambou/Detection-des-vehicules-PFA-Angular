@@ -1,0 +1,35 @@
+
+<div class="form_wrapper mt-4" style="align-items:center;"style="width: 150vh;">
+
+  <div class="form_container " >
+    <div class="title_container">
+      <h2 class="text-center">Fiche De Recherche  </h2>
+    </div>
+    <div class="row clearfix">
+      <div class="">
+        <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+
+          <div class="form-group">
+            <label for="recherche">code Du Projet</label>
+            <input type="text" #recherche (ngModel)="recherche" name="recherche" id="recherche" class="form-control" placeholder="Fiche De Recherche"required>
+          </div>
+
+
+          <div class="form-group">
+            <div class="d-flex justify-content-center align-items-center">
+
+              <input type="submit" value="Register" class="btn btn-warning btn-lg mt-5 ms-2 ">
+              <input type="submit"   routerLink="/ListProjet" value="Lister Projet
+" class="btn btn-info btn-lg mt-5 ms-2">
+            </div>
+          </div>
+          <br>
+          <div class="alert  alert-success alert-dismissible fade show" role="alert" id="successAlert" *ngIf="showSuccessAlert">
+            <strong>Registration Success! </strong>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

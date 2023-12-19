@@ -1,0 +1,36 @@
+/* Réduire la taille de la police pour tout le contenu de la page */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #dadae5;
+  font-size: 2px; /* Ajustez la taille de la police selon vos préférences */
+}
+
+.jumbotron {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  padding-top: 5px;
+  text-align: center;
+  font-size: 1rem; /* Ajustez la taille de la police selon vos préférences */
+
+}
+
+.container {
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(20, 48, 224, 0.1);
+  font-size: 10px; /* Ajustez la taille de la police selon vos préférences */
+  max-width: 900px; /* Définissez une largeur maximale plus petite pour le contenu */
+
+}
+
+footer {
+  background-color: #f8f9fa;
+  padding: 5px 0;
+  border-top: 1px solid #ccc;
+}
