@@ -19,6 +19,10 @@ import { VehiculeComponent } from './vehicule/vehicule.component';
 import { FicheComponent } from './fiche/fiche.component';
 import { PersonneComponent } from './personne/personne.component';
 import { ListerFicheComponent } from './lister-fiche/lister-fiche.component';
+import { AjouterTerrainComponent } from './ajouter-terrain/ajouter-terrain.component';
+import { ListerPoliceTerrainComponent } from './lister-police-terrain/lister-police-terrain.component';
+import { ListerVehiculeComponent } from './lister-vehicule/lister-vehicule.component';
+import { ListerPersonneComponent } from './lister-personne/lister-personne.component';
 
 // @ts-ignore
 @NgModule({
@@ -28,7 +32,7 @@ import { ListerFicheComponent } from './lister-fiche/lister-fiche.component';
     AdminComponent,
     ForbiddenComponent,
     HeaderComponent,
-    HomeComponent,LoginComponent, VehiculeComponent, FicheComponent, PersonneComponent, ListerFicheComponent,
+    HomeComponent,LoginComponent, VehiculeComponent, FicheComponent, PersonneComponent, ListerFicheComponent, AjouterTerrainComponent, ListerPoliceTerrainComponent, ListerVehiculeComponent, ListerPersonneComponent,
   ],
   imports: [
     BrowserModule,

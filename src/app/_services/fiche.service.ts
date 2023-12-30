@@ -8,10 +8,7 @@ import {Observable} from "rxjs";
 export class FicheService {
 
   PATH_OF_API="http://localhost:9090/ficher"
-
   constructor(private http:HttpClient) { }
-
-
   public EnregistrerFiche(clientData: any){
     return this.http.post(this.PATH_OF_API,clientData);
   }

@@ -1,6 +1,6 @@
 
 <div><section class="table__header">
-  <h1>Liste Des fiche de recherche</h1>
+  <h1>Liste Des personnes</h1>
   <div class="input-group">
 
   </div>
@@ -11,8 +11,14 @@
     <input type="submit" value="Ajouter Projet"  routerLink="/projet"  class="btn btn-outline-success btn-lg mt-5 ms-2">
     <br><br>
     <tr>
-      <th>recherche</th>
-
+      <th>CIN</th>
+      <th>nom</th>
+      <th>prenom</th>
+      <th>adresse</th>
+      <th>numeroTelephone</th>
+      <th>email</th>
+      <th>age</th>
+      <th>sexe</th>
 
       <th style="font-weight: bold; color: #1784f1"> Action Modifier</th>
       <th style="font-weight: bold; color: #b80434"> Action Supprimer</th>
@@ -22,7 +28,15 @@
     </thead>
     <tbody class="tbody">
     <tr *ngFor = "let client of  studentDetails" >
-      <td>{{ client.recherche}}</td>
+      <td>{{ client.CIN}}</td>
+      <td>{{ client.nom}}</td>
+      <td>{{ client.prenom}}</td>
+      <td>{{ client.adresse}}</td>
+      <td>{{ client.numeroTelephone}}</td>
+      <td>{{ client.email}}</td>
+      <td>{{ client.age}}</td>
+      <td>{{ client.sexe}}</td>
+
       <td>
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">

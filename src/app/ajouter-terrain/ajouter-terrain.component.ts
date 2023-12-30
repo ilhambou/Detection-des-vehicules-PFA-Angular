@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import {AjouterPoliceTService} from "../_services/ajouter-police-t.service";
+import {FicheService} from "../_services/fiche.service";
 import {NgForm} from "@angular/forms";
-import {VehiculeService} from "../_services/vehicule.service";
+import {AjouterPoliceTService} from "../_services/ajouter-police-t.service";
 
 @Component({
-  selector: 'app-vehicule',
-  templateUrl: './vehicule.component.html',
-  styleUrl: './vehicule.component.css'
+  selector: 'app-ajouter-terrain',
+  templateUrl: './ajouter-terrain.component.html',
+  styleUrl: './ajouter-terrain.component.css'
 })
-export class VehiculeComponent {
+export class AjouterTerrainComponent {
   studentDetails =null;
   clientToUpdate: {
     id:string,
@@ -43,7 +43,7 @@ export class VehiculeComponent {
   };
   showSuccessAlert: boolean = false;
 
-  constructor(private clientService: VehiculeService, ) {
+  constructor(private clientService: AjouterPoliceTService, ) {
     this.getProjetDetails();
   }
 
@@ -70,23 +70,19 @@ export class VehiculeComponent {
       // other properties
 
     };
-    if (!registerForm.value.marque) {
-      alert('Le champ "marque" est obligatoire.');
+    if (!registerForm.value.userName) {
+      alert('Le champ "userName" est obligatoire.');
       //this.errorMessage = 'Le champ "Nom" est obligatoire.';
-    } if (!registerForm.value.modele) {
-      alert('Le champ "modele" est obligatoire.');
-      //this.errorMessage = 'Le champ "Nom" est obligatoire.';
-    }
-    if (!registerForm.value.couleur) {
-      alert('Le champ "couleur" est obligatoire.');
+    } if (!registerForm.value.userFirstName) {
+      alert('Le champ "userFirstName" est obligatoire.');
       //this.errorMessage = 'Le champ "Nom" est obligatoire.';
     }
-    if (!registerForm.value.carburant) {
-      alert('Le champ "carburant" est obligatoire.');
+    if (!registerForm.value.userLastName) {
+      alert('Le champ "userLastName" est obligatoire.');
       //this.errorMessage = 'Le champ "Nom" est obligatoire.';
     }
-    if (!registerForm.value.automatique) {
-      alert('Le champ "automatique" est obligatoire.');
+    if (!registerForm.value.userPassword) {
+      alert('Le champ "userPassword" est obligatoire.');
       //this.errorMessage = 'Le champ "Nom" est obligatoire.';
     }
     else {

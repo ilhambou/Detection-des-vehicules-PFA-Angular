@@ -1,0 +1,45 @@
+
+<div class="form_wrapper mt-4" style="align-items:center;"style="width: 150vh;">
+
+  <div class="form_container " >
+    <div class="title_container">
+      <h2 class="text-center">Ajouter PoliceT </h2>
+    </div>
+    <div class="row clearfix">
+      <div class="">
+        <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+
+          <div class="form-group">
+            <label for="userName">userName</label>
+            <input type="text" #userName (ngModel)="userName" name="userName" id="userName" class="form-control" placeholder="userName" required>
+          </div>
+          <div class="form-group">
+            <label for="userFirstName">userFirstName</label>
+            <input type="text" #userFirstName (ngModel)="userFirstName" name="userFirstName" id="userFirstName" class="form-control" placeholder="userFirstName" required>
+          </div>
+          <div class="form-group">
+            <label for="userLastName">userLastName</label>
+            <input type="text" #userLastName (ngModel)="userLastName" name="userLastName" id="userLastName" class="form-control" placeholder="userLastName" required>
+          </div>
+          <div class="form-group">
+            <label for="userPassword">userPassword</label>
+            <input type="password" #userPassword (ngModel)="userPassword" name="userPassword" id="userPassword" class="form-control" placeholder="userPassword" required>
+          </div>
+          <div class="form-group">
+            <div class="d-flex justify-content-center align-items-center">
+
+              <input type="submit" value="Register" class="btn btn-warning btn-lg mt-5 ms-2 ">
+              <input type="submit"   routerLink="/ListProjet" value="Lister Projet
+" class="btn btn-info btn-lg mt-5 ms-2">
+            </div>
+          </div>
+          <br>
+          <div class="alert  alert-success alert-dismissible fade show" role="alert" id="successAlert" *ngIf="showSuccessAlert">
+            <strong>Registration Success! </strong>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

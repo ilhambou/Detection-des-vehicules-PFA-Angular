@@ -1,0 +1,91 @@
+
+/* Réduisez la largeur du conteneur de tableau pour qu'il ne chevauche pas le sidebar */
+.table-container {
+  max-width: 100%; /* Ajustez la valeur en fonction de vos besoins */
+  display: flex;
+
+  justify-content: center;
+  position: fixed; /* Ajoutez une position relative */
+  z-index: 1; /* Ajoutez un z-index pour que le tableau apparaisse devant le sidebar */
+  margin: 0 auto; /* Centrez le tableau horizontalement */
+
+}
+
+.sidebar {
+  width: 25%; /* Ajustez la largeur du sidebar selon vos besoins */
+  float: left; /* Faites flotter le sidebar à gauche */
+}
+/* Supprimez les propriétés right et left du tableau */
+.table {
+  width: 80%; /* Utilisez 100% pour remplir le conteneur */
+  margin: 0 auto; /* Centrez le tableau horizontalement */
+}
+
+/* Restez attentif à d'autres styles qui pourraient affecter l'ordre d'affichage des éléments, notamment le sidebar. */
+
+/* Alternate row colors */
+tr:nth-child(even) {
+  background-color: #b40c0c; /* Light gray */
+}
+
+tr:nth-child(odd) {
+  background-color: #bea9a9; /* White */
+}
+
+/* Style for table header row */
+th {
+  color: #010b11;
+}
+.button-container {
+  display: grid;
+  grid-template-columns: 10fr auto 100fr; /* Divise l'espace en trois colonnes */
+  align-items: center;
+  justify-items: center;
+  margin-top: 10px;
+}
+
+#previousButton, #nextButton {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #d78c23; /* Couleur de fond du bouton */
+  color: white; /* Couleur du texte */
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+#previousButton:hover, #nextButton:hover {
+  background-color: #ecbd7d; /* Couleur de fond au survol */
+}
+.status.cancelled {
+  background-color: #e30b3d;
+  color: black;
+}
+.status-enattente{
+  background-color: #85b5e3;
+  color: black;
+}
+.status-inactif {
+  background-color: #bdc1ce; /* Change to the desired blue color */
+  color: black; /* Change to the desired text color for INACTIF */
+}
+.status-actif{
+  background-color: #4068ec; /* Change to the desired blue color */
+  color: black; /* Change to the desired text color for INACTIF */
+}
+.status-approuve{
+  background-color: #9f40ec; /* Change to the desired blue color */
+  color: black; /* Change to the desired text color for INACTIF */
+}
+.status-enattentedepaiement{
+  background-color: #d55c5c; /* Change to the desired blue color */
+  color: black; /* Change to the desired text color for INACTIF */
+}
+.status-enretard{
+  background-color: #37a60b; /* Change to the desired blue color */
+  color: black;
+}
+.status-prospect{
+  background-color: #6b0c79; /* Change to the desired blue color */
+  color: black;
+}

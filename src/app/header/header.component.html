@@ -142,13 +142,100 @@
             </li>
             <li class="nav-item active">
               <a class="nav-link" routerLink="/user"
-                 *ngIf="userService.roleMatch(['User'])">User Dashboard <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" routerLink="/fiche"
-                 *ngIf="userService.roleMatch(['User','Admin'])">Fiche De Recherche   <span class="sr-only">(current)</span></a>
+                 *ngIf="userService.roleMatch(['User'])">
+                User Dashboard <span class="sr-only">(current)</span></a>
             </li>
 
+  <!--<li class="nav-item" *ngIf="userService.roleMatch(['User','Admin'])">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-tachometer-alt"></i>
+                  <p>
+                    Police Terrain
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a routerLink="/ajouterPoliceT" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Ajouter Police </p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a routerLink="/listerFiche" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Lister Police</p>
+                    </a>
+                  </li>-->
+          <li class="nav-item" *ngIf="userService.roleMatch(['Admin'])">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Police Terrain
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item" *ngIf="userService.roleMatch(['Admin'])">
+                <a routerLink="/ajouterPoliceT" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ajouter Police</p>
+                </a>
+              </li>
+              <li class="nav-item" *ngIf="userService.roleMatch(['Admin'])">
+                <a routerLink="/listerPolice" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Lister Police</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item" *ngIf="userService.roleMatch(['Admin'])">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+               Vehicule
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item" *ngIf="userService.roleMatch(['Admin','User'])">
+                <a routerLink="/ajouterVehicule" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ajouter Vehicule</p>
+                </a>
+              </li>
+              <li class="nav-item" *ngIf="userService.roleMatch(['Admin','User'])">
+                <a routerLink="/listerVehicule" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Lister Vehicule</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item" *ngIf="userService.roleMatch(['Admin'])">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Personne
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item" *ngIf="userService.roleMatch(['Admin','User'])">
+                <a routerLink="/ajouterPersonne" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Ajouter Personne</p>
+                </a>
+              </li>
+              <li class="nav-item" *ngIf="userService.roleMatch(['Admin','User'])">
+                <a routerLink="/listerPersonne" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Lister Personne</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item" *ngIf="userService.roleMatch(['User','Admin'])">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -172,6 +259,8 @@
               </li>
 
 
+
+
           <li class="nav-item ">
             <a href="/dashboard" class="nav-link active" *ngIf="userService.roleMatch('Admin')">
               <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -180,9 +269,10 @@
               </p>
             </a>
           </li>
+            </ul>
+          </li>
+                </ul>
 
-
-        </ul>
           <br>
           <br><br>
           <li class="nav-item">
@@ -196,7 +286,7 @@
           </li>
 
 
-        </ul>
+
 
       </nav>
 

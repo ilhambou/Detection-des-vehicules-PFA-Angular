@@ -5,11 +5,15 @@ import {Observable} from "rxjs";
 @Injectable({
   providedIn: 'root'
 })
-export class VehiculeService {
-  PATH_OF_API="http://localhost:9090/vehicule"
+export class AjouterPoliceTService {
+
+  PATH_OF_API="http://localhost:9090"
+
   constructor(private http:HttpClient) { }
+
+
   public EnregistrerFiche(clientData: any){
-    return this.http.post(this.PATH_OF_API,clientData);
+    return this.http.post(this.PATH_OF_API+"/registerNewUser",clientData);
   }
   public getFiche():Observable<string[]>{
     return this.http.get<string[]>(this.PATH_OF_API);

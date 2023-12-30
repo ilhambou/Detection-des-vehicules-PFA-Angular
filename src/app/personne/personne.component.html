@@ -1,1 +1,58 @@
-<p>personne works!</p>
+
+<div class="form_wrapper mt-4" style="align-items:center;"style="width: 150vh;">
+
+  <div class="form_container " >
+    <div class="title_container">
+      <h2 class="text-center">Ajouter Personne  </h2>
+    </div>
+    <div class="row clearfix">
+      <div class="">
+        <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+
+          <div class="form-group">
+            <label for="CIN">CIN</label>
+            <input type="text" #CIN (ngModel)="CIN" name="CIN" id="CIN" class="form-control" placeholder="CIN" required>
+          </div>
+          <div class="form-group">
+            <label for="nom">nom</label>
+            <input type="text" #nom (ngModel)="nom" name="nom" id="nom" class="form-control" placeholder="nom" required>
+          </div>
+          <div class="form-group">
+            <label for="prenom">prenom</label>
+            <input type="text" #prenom (ngModel)="prenom" name="prenom" id="prenom" class="form-control" placeholder="prenom" required>
+          </div>
+          <div class="form-group">
+            <label for="adresse">adresse</label>
+            <input type="text" #adresse (ngModel)="adresse" name="adresse" id="adresse" class="form-control" placeholder="adresse" required>
+          </div>
+          <div class="form-group">
+            <label for="numeroTelephone">numeroTelephone</label>
+            <input type="text" #numeroTelephone (ngModel)="numeroTelephone" name="numeroTelephone" id="numeroTelephone" class="form-control" placeholder="numeroTelephone" required>
+          </div>
+          <div class="form-group">
+            <label for="email">email</label>
+            <input type="email" #email (ngModel)="email" name="email" id="email" class="form-control" placeholder="email" required>
+          </div>
+          <div class="form-group">
+            <label for="age">age</label>
+            <input type="number" #age (ngModel)="age" name="age" id="age" class="form-control" placeholder="age" required>
+          </div>
+          <div class="form-group">
+            <label for="sexe">sexe</label>
+            <input type="text" #sexe (ngModel)="sexe" name="sexe" id="sexe" class="form-control" placeholder="sexe" required>
+          </div>
+          <div class="form-group">
+            <div class="d-flex justify-content-center align-items-center">
+              <input type="submit" value="Register" class="btn btn-warning btn-lg mt-5 ms-2 ">
+            </div>
+          </div>
+          <br>
+          <div class="alert  alert-success alert-dismissible fade show" role="alert" id="successAlert" *ngIf="showSuccessAlert">
+            <strong>Registration Success! </strong>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
