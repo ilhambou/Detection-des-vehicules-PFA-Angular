@@ -73,78 +73,7 @@
 
 
 </div>
-<!--
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modification Projet </h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form #updateForm="ngForm" (ngSubmit)="updateClient(updateForm)">
-          <div class="form-group">
-            <label for="id">id Client</label>
-            <input type="text" #id [(ngModel)]="clientToUpdate.id" name="id" id="id" class="form-control" placeholder="id Client">
-          </div>
-          <div class="form-group">
-            <label for="code">code Projet</label>
-            <input type="text" #code [(ngModel)]="clientToUpdate.code" name="code" id="code" class="form-control" placeholder="code Client">
-          </div>
 
-          <div class="form-group">
-            <label for="creeLe">Le Projet Cree</label>
-            <input type="date" #creeLe [(ngModel)]="clientToUpdate.creeLe" name="creeLe" id="creeLe" class="form-control" placeholder="Client Cree Le ">
-          </div>
-          <div class="form-group">
-            <label for="date_Debut">Date Debut Du Projet </label>
-            <input type="date" #date_Debut [(ngModel)]="clientToUpdate.date_Debut" name="date_Debut" id="date_Debut" class="form-control" placeholder="Client Cree Le ">
-          </div>
-          <div class="form-group">
-            <label for="date_Fin">Date Fin Du Projet </label>
-            <input type="date" #date_Fin [(ngModel)]="clientToUpdate.date_Fin" name="date_Fin" id="date_Fin" class="form-control" placeholder="Client Cree Le ">
-          </div>
-          <div class="form-group">
-            <label for="statutProjet">Statut Tache</label>
-            <select #statutProjet [(ngModel)]="clientToUpdate.statutProjet" name="statutProjet" id="statutProjet" class="form-control">
-              <option value="EN_REVISION">EN_REVISION</option>
-              <option value="EN_COURS">EN_COURS</option>
-              <option value="EN_ATTENTE">EN_ATTENTE</option>
-              <option value="EN_RETARD">EN_RETARD</option>
-              <option value="BLOQUEE">BLOQUEE</option>
-              <option value="EN_ATTENTE_DE_VALIDATION">EN_ATTENTE_DE_VALIDATION</option>
-              <option value="ASSIGNEE">ASSIGNEE</option>
-              <option value="TERMINEE">TERMINEE</option>
-              <option value="ANNULEE">ANNULEE</option>
-              <option value="SUSPENDU">SUSPENDU</option>
-              <option value="EN_EVALUATION">EN_EVALUATION</option>
-              <option value="EN_PLANIFICATION">EN_PLANIFICATION</option>
-              <option value="EN_DEVELOPPEMENT">EN_DEVELOPPEMENT</option>
-              <option value="EN_TEST">EN_TEST</option>
-              <option value="EN_MAINTENANCE">EN_MAINTENANCE</option>
-              <option value="EN_ATTENTE_APPROBATION">EN_ATTENTE_APPROBATION</option>
-
-
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="budget">Budget  Du Projet </label>
-            <input type="number" #budget [(ngModel)]="clientToUpdate.budget" name="budget" id="budget" class="form-control" placeholder="Budget Du Projet">
-          </div>
-          <div class="modal-footer">
-            <input type="submit" value="Modifier" class="btn btn-warning btn-lg mt-2 ms-2 ">
-            <button type="button" class="btn btn-secondary btn-lg mt-2 ms-2" data-bs-dismiss="modal">Close</button>
-
-          </div>
-        </form>
-      </div>
-
-
-
-    </div>
-  </div>
-</div>
--->
 <script>
   setTimeout(function() {
     document.getElementById('successAlert').style.display = 'none';

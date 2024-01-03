@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {AjouterPoliceTService} from "../_services/ajouter-police-t.service";
 import {VehiculeService} from "../_services/vehicule.service";
 import {PersonneService} from "../_services/personne.service";
+import { WebSocketServiceService } from '../_services/web-socket-service.service';
 
 @Component({
   selector: 'app-lister-vehicule',
@@ -9,6 +10,7 @@ import {PersonneService} from "../_services/personne.service";
   styleUrl: './lister-vehicule.component.css'
 })
 export class ListerVehiculeComponent {
+  notifications: any[] = [];
   studentDetails =null;
   itemsPerPage: number = 8;
   currentPage: number = 1;
@@ -45,7 +47,7 @@ export class ListerVehiculeComponent {
   };
   showSuccessAlert: boolean = false;
 
-  constructor(private clientService: VehiculeService,) {
+  constructor(private clientService: VehiculeService,private webSocketService: WebSocketServiceService) {
     this.getProjetDetails();
   }
 
@@ -62,7 +64,20 @@ export class ListerVehiculeComponent {
         console.log(error);
       }
     );
+    // Connect to the WebSocket server when the component is initialized
+    this.webSocketService.connect();
+    // Listen for notifications from the WebSocket service
+    this.webSocketService.listenForNotifications().subscribe((data: any) => {
+      console.log('Notification received:', data);
+      this.notifications.unshift(data);
+      // Display the information in your Angular component as needed
+      this.displayAlert(data.message);
 
+    });
+
+  }
+  private displayAlert(message: string): void {
+    alert(message);
   }
   sectors: string[] = [];
   sectors2: string[] = [];

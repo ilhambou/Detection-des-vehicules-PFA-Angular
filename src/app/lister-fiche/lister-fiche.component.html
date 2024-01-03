@@ -1,138 +1,55 @@
+<!-- list-fiche.component.html -->
 
-<div><section class="table__header">
-  <h1>Liste Des fiche de recherche</h1>
-  <div class="input-group">
+<div>
+  <h2>List of Fiches</h2>
 
-  </div>
-
-</section>
-  <table class="table table-bordered mt-4">
-    <thead class="thead">
-    <input type="submit" value="Ajouter Projet"  routerLink="/projet"  class="btn btn-outline-success btn-lg mt-5 ms-2">
-    <br><br>
-    <tr>
-      <th>recherche</th>
-
-
-      <th style="font-weight: bold; color: #1784f1"> Action Modifier</th>
-      <th style="font-weight: bold; color: #b80434"> Action Supprimer</th>
-    </tr>
-
-
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>CIN</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Adresse</th>
+        <th>Numéro de téléphone</th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>Sexe</th>
+        <th>Vehicules</th>
+        <th>Actions</th>
+      </tr>
     </thead>
-    <tbody class="tbody">
-    <tr *ngFor = "let client of  studentDetails" >
-      <td>{{ client.recherche}}</td>
-      <td>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-            <path d="M12.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1.5 1.5 0 0 1-1.088.352l-3.5-1A1.5 1.5 0 0 1 1 11.5v-3.793l9-9zM14.793 2.5 12 5.293 10.707 4l2.793-2.793a.5.5 0 0 1 .707 0l1.5 1.5a.5.5 0 0 1 0 .707z"/>
-            <path fill-rule="evenodd" d="M3.146 13.354a.5.5 0 0 0-.146.353v1.5a.5.5 0 0 0 .5.5h1.5a.5.5 0 0 0 .353-.146L12.354 9.5a.5.5 0 0 0 0-.707l-1.5-1.5a.5.5 0 0 0-.707 0L3.146 13.354zM4 14h-1v-1l7.5-7.5 1 1L4 14z"/>
-          </svg>
-          Modifier
-        </button>
-      </td>
-      <td>
-        <button type="button" class="btn btn-danger" (click)="deleteProjet(client)">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-            <path d="M1 3.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-1v9a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-9H1a.5.5 0 0 1-.5-.5zM4.5 1h7a.5.5 0 0 1 .5.5v1h-8v-1a.5.5 0 0 1 .5-.5zm4 5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5zm-3 0a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5zm2 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1z"/>
-          </svg>
-          Supprimer
-        </button>
-      </td>
-
-    </tr>
+    <tbody>
+      <tr *ngFor="let fiche of fiches">
+        <td>{{ fiche.id }}</td>
+        <td>{{ fiche.personne?.CIN }}</td>
+        <td>{{ fiche.personne?.nom }}</td>
+        <td>{{ fiche.personne?.prenom }}</td>
+        <td>{{ fiche.personne?.adresse }}</td>
+        <td>{{ fiche.personne?.numeroTelephone }}</td>
+        <td>{{ fiche.personne?.email }}</td>
+        <td>{{ fiche.personne?.age }}</td>
+        <td>{{ fiche.personne?.sexe }}</td>
+        <td>{{ getVehiculeList(fiche.vehicules) }}</td>
+        <td>
+          <button (click)="showVehicleDetails(fiche)">Show Details</button>
+        </td>
+      </tr>
     </tbody>
-
-
-    <div class="button-container">
-      <button (click)="previousPage()" [disabled]="currentPage === 1" class="btn btn-primary" id="previousButton">Précédent</button>
-      <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="btn btn-primary" id="nextButton">Suivant</button>
-    </div>
-
-
-
   </table>
 
-
-
-
-
-</div>
-<!--
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modification Projet </h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form #updateForm="ngForm" (ngSubmit)="updateClient(updateForm)">
-          <div class="form-group">
-            <label for="id">id Client</label>
-            <input type="text" #id [(ngModel)]="clientToUpdate.id" name="id" id="id" class="form-control" placeholder="id Client">
-          </div>
-          <div class="form-group">
-            <label for="code">code Projet</label>
-            <input type="text" #code [(ngModel)]="clientToUpdate.code" name="code" id="code" class="form-control" placeholder="code Client">
-          </div>
-
-          <div class="form-group">
-            <label for="creeLe">Le Projet Cree</label>
-            <input type="date" #creeLe [(ngModel)]="clientToUpdate.creeLe" name="creeLe" id="creeLe" class="form-control" placeholder="Client Cree Le ">
-          </div>
-          <div class="form-group">
-            <label for="date_Debut">Date Debut Du Projet </label>
-            <input type="date" #date_Debut [(ngModel)]="clientToUpdate.date_Debut" name="date_Debut" id="date_Debut" class="form-control" placeholder="Client Cree Le ">
-          </div>
-          <div class="form-group">
-            <label for="date_Fin">Date Fin Du Projet </label>
-            <input type="date" #date_Fin [(ngModel)]="clientToUpdate.date_Fin" name="date_Fin" id="date_Fin" class="form-control" placeholder="Client Cree Le ">
-          </div>
-          <div class="form-group">
-            <label for="statutProjet">Statut Tache</label>
-            <select #statutProjet [(ngModel)]="clientToUpdate.statutProjet" name="statutProjet" id="statutProjet" class="form-control">
-              <option value="EN_REVISION">EN_REVISION</option>
-              <option value="EN_COURS">EN_COURS</option>
-              <option value="EN_ATTENTE">EN_ATTENTE</option>
-              <option value="EN_RETARD">EN_RETARD</option>
-              <option value="BLOQUEE">BLOQUEE</option>
-              <option value="EN_ATTENTE_DE_VALIDATION">EN_ATTENTE_DE_VALIDATION</option>
-              <option value="ASSIGNEE">ASSIGNEE</option>
-              <option value="TERMINEE">TERMINEE</option>
-              <option value="ANNULEE">ANNULEE</option>
-              <option value="SUSPENDU">SUSPENDU</option>
-              <option value="EN_EVALUATION">EN_EVALUATION</option>
-              <option value="EN_PLANIFICATION">EN_PLANIFICATION</option>
-              <option value="EN_DEVELOPPEMENT">EN_DEVELOPPEMENT</option>
-              <option value="EN_TEST">EN_TEST</option>
-              <option value="EN_MAINTENANCE">EN_MAINTENANCE</option>
-              <option value="EN_ATTENTE_APPROBATION">EN_ATTENTE_APPROBATION</option>
-
-
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="budget">Budget  Du Projet </label>
-            <input type="number" #budget [(ngModel)]="clientToUpdate.budget" name="budget" id="budget" class="form-control" placeholder="Budget Du Projet">
-          </div>
-          <div class="modal-footer">
-            <input type="submit" value="Modifier" class="btn btn-warning btn-lg mt-2 ms-2 ">
-            <button type="button" class="btn btn-secondary btn-lg mt-2 ms-2" data-bs-dismiss="modal">Close</button>
-
-          </div>
-        </form>
-      </div>
-
-
-
-    </div>
+  <div *ngIf="selectedFiche">
+    <h3>Details for Fiche ID {{ selectedFiche?.id }}</h3>
+    <ul>
+      <li *ngFor="let vehicule of selectedFiche.vehicules">
+        <strong>Marque:</strong> {{ vehicule.marque }}<br>
+        <strong>Modele:</strong> {{ vehicule.modele }}<br>
+        <strong>Couleur:</strong> {{ vehicule.couleur }}<br>
+        <strong>Carburant:</strong> {{ vehicule.carburant }}<br>
+        <strong>Automatique:</strong> {{ vehicule.automatique ? 'Yes' : 'No' }}<br>
+        <strong>License Plate:</strong> {{ vehicule.licenseplate }}<br>
+        <br>
+      </li>
+    </ul>
   </div>
 </div>
--->
-<script>
-  setTimeout(function() {
-    document.getElementById('successAlert').style.display = 'none';
-  }, 5000); // 5000 milliseconds = 5 seconds
-</script>

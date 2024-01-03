@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
+import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {UserComponent} from "./user/user.component";
@@ -16,13 +15,17 @@ import {AuthInterceptor} from "./_auth/auth.interceptor";
 import { AuthGuard } from './_auth/auth.guard';
 import {UserService} from "./_services/user.service";
 import { VehiculeComponent } from './vehicule/vehicule.component';
-import { FicheComponent } from './fiche/fiche.component';
 import { PersonneComponent } from './personne/personne.component';
 import { ListerFicheComponent } from './lister-fiche/lister-fiche.component';
 import { AjouterTerrainComponent } from './ajouter-terrain/ajouter-terrain.component';
 import { ListerPoliceTerrainComponent } from './lister-police-terrain/lister-police-terrain.component';
 import { ListerVehiculeComponent } from './lister-vehicule/lister-vehicule.component';
 import { ListerPersonneComponent } from './lister-personne/lister-personne.component';
+import { FicheComponent } from './fiche/fiche.component';
+import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io';
+import { WebSocketServiceService } from './_services/web-socket-service.service';
+
+const config: SocketIoConfig = { url: 'http://127.0.0.1:5000', options: {} };
 
 // @ts-ignore
 @NgModule({
@@ -38,8 +41,9 @@ import { ListerPersonneComponent } from './lister-personne/lister-personne.compo
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-HttpClientModule,
-    RouterModule
+    HttpClientModule,
+    RouterModule,
+    SocketIoModule.forRoot(config)
   ],
   providers: [
 
@@ -49,7 +53,8 @@ HttpClientModule,
       multi:true
     },
     UserService,
-    provideClientHydration()
+    provideClientHydration(),
+    WebSocketServiceService,
   ],
   bootstrap: [AppComponent]
 })
