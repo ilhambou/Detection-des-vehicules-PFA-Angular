@@ -14,8 +14,12 @@ export class FicheComponent {
     personne: {} as Personne
   };
 
+  showEnregistrerButton: boolean = false;
+
   constructor(private ficheService: FicheService) {}
   showPersonForm: boolean = false;
+  showPersonButton: boolean= true;
+  personButtonText: string = 'Ajouter personne';
 
   addFiche() {
     this.ficheService.addFiche(this.fiche).subscribe(
@@ -27,6 +31,7 @@ export class FicheComponent {
       }
     );
   }
+  personButtonColor: string = 'success'; // 'success' for the default green color
 
   addVehicule() {
     const newVehicule: Vehicule = {
@@ -38,10 +43,18 @@ export class FicheComponent {
       licenseplate: ''
     };
     this.fiche.vehicules.push(newVehicule);
+    this.showEnregistrerButton = this.showPersonForm || this.fiche.vehicules.length > 0;
+
   }
   togglePersonForm() {
     this.showPersonForm = !this.showPersonForm;
+    this.showPersonButton = false; // Set to false once the button is clicked
+    this.showPersonButton = !this.showPersonForm; // Set to false once the button is clicked
+    this.personButtonText = this.showPersonForm ? 'Fermer le formulaire' : 'Ajouter personne';
+    this.personButtonColor = this.showPersonForm ? 'danger' : 'success'; // Change to red when the form is open
+    this.showEnregistrerButton = this.showPersonForm || this.fiche.vehicules.length > 0;
+
   }
- 
-  
+
+
 }

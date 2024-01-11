@@ -2,12 +2,12 @@
 
   <div class="form_container " >
     <div class="title_container">
-      <h2 class="text-center">Ajouter Fiche </h2>
+      <h2 class="text-center d-inline">Ajouter fiche de recherche</h2>
     </div>
     <div class="row clearfix">
       <div class="">
         <form (ngSubmit)="addFiche()">
-          
+
           <!-- Section Personne -->
           <div *ngIf="showPersonForm">
             <h2>Ajouter Personne</h2>
@@ -43,8 +43,7 @@
               <label for="sexe">Sexe</label>
               <input type="text" [(ngModel)]="fiche.personne.sexe" name="sexe" id="sexe" class="form-control" placeholder="Sexe" required>
             </div>
-           
-          </div>
+                 </div>
 
           <!-- Section Véhicules -->
           <div *ngFor="let vehicule of fiche.vehicules; let i = index">
@@ -73,16 +72,27 @@
               <label for="licenseplate">License Plate</label>
               <input [(ngModel)]="vehicule.licenseplate" name="licenseplate" id="licenseplate" class="form-control" placeholder="License Plate" required>
             </div>
+                </div>
+          <div class="form-group">
+            <div class="d-flex justify-content-center align-items-center">
+              <!-- Show Enregistrer button only if either the person or vehicle section is visible -->
+              <input *ngIf="showEnregistrerButton" type="submit" value="Enregistrer" class="btn btn-warning btn-lg mt-3 ms-2 ">
+            </div>
           </div>
 
-          <!-- Bouton pour afficher le formulaire de personne -->
-          <button type="button" (click)="togglePersonForm()">Afficher le formulaire de personne</button>
-
-          <!-- Bouton pour ajouter un véhicule -->
-          <button type="button" (click)="addVehicule()">Ajouter Véhicule</button>
+          <!-- Bouton pour afficher le formulaire de personne avec une icône "plus" -->
+         <!-- <button  type="button" class="btn btn-outline-success btn-lg mt-3 ms-2" (click)="togglePersonForm()">
+            <i class="fas fa-plus"></i> Ajouter personne
+          </button>-->
+          <button type="button" [class]="'btn btn-outline-' + personButtonColor + ' btn-lg mt-3 ms-2'" (click)="togglePersonForm()">
+            <i class="fas fa-plus"></i> {{ personButtonText }}
+          </button>
+          <!-- Bouton pour ajouter un véhicule avec une icône "plus" -->
+          <button type="button"  class="btn btn-outline-success btn-lg mt-3 ms-2" (click)="addVehicule()">
+            <i class="fas fa-plus"></i> Ajouter Véhicule
+          </button>
 
           <!-- Bouton de soumission du formulaire -->
-          <button type="submit">Ajouter Fiche</button>
         </form>
       </div>
     </div>

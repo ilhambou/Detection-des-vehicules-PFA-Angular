@@ -116,7 +116,7 @@
 
     <a href="index3.html" class="brand-link">
       <img src="assets/img/police.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-99" style="opacity: .9">
-      <span class="brand-text font-weight-light">POLICE MAROC</span>
+      <span class="brand-text font-weight-light">POLICE </span>
     </a>
 
     <div class="sidebar" >
@@ -199,12 +199,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item" *ngIf="userService.roleMatch(['Admin','User'])">
-                <a routerLink="/ajouterVehicule" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Vehicule</p>
-                </a>
-              </li>
+
               <li class="nav-item" *ngIf="userService.roleMatch(['Admin','User'])">
                 <a routerLink="/listerVehicule" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -222,12 +217,7 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item" *ngIf="userService.roleMatch(['Admin','User'])">
-                <a routerLink="/ajouterPersonne" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Ajouter Personne</p>
-                </a>
-              </li>
+
               <li class="nav-item" *ngIf="userService.roleMatch(['Admin','User'])">
                 <a routerLink="/listerPersonne" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

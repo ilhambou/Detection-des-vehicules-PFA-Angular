@@ -1,6 +1,6 @@
 
 <div><section class="table__header">
-  <h1>Liste Des personnes</h1>
+  <h1>Liste des personnes</h1>
   <div class="input-group">
 
   </div>
@@ -8,7 +8,6 @@
 </section>
   <table class="table table-bordered mt-4">
     <thead class="thead">
-    <input type="submit" value="Ajouter Projet"  routerLink="/projet"  class="btn btn-outline-success btn-lg mt-5 ms-2">
     <br><br>
     <tr>
       <th>CIN</th>
@@ -28,7 +27,7 @@
     </thead>
     <tbody class="tbody">
     <tr *ngFor = "let client of  studentDetails" >
-      <td>{{ client.CIN}}</td>
+      <td>{{ client.cin}}</td>
       <td>{{ client.nom}}</td>
       <td>{{ client.prenom}}</td>
       <td>{{ client.adresse}}</td>
