@@ -9,16 +9,18 @@ import {UserService} from "../_services/user.service";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit{
- constructor(private userAuthService:UserAuthService, private router:Router,
-             public userService:UserService) {
- }
+  constructor(private userAuthService:UserAuthService, private router:Router,
+              public userService:UserService) {
+  }
   ngOnInit(): void {
+
   }
-  public isLoggdIn(){
-   return this.userAuthService.isLoggedIn();
+  public isLoggedIn(){
+    return this.userAuthService.isLoggedIn();
   }
-public logout(){
-   this.userAuthService.clear();
-   this.router.navigate(['/login']);
-}
+  public logout(){
+    this.userAuthService.clear();
+    this.router.navigate(['/login']);
+  }
+
 }

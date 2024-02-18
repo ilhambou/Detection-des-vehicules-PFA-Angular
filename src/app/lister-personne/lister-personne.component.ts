@@ -53,13 +53,13 @@ export class ListerPersonneComponent {
       this.showSuccessAlert = false;
     }, 5000);
     this.clientService.getFiche().subscribe(
-      (secteurs) => {
-        // @ts-ignore
-        this.sectors = secteurs;
-      },
-      (error: any) => {
-        console.log(error);
-      }
+        (secteurs) => {
+          // @ts-ignore
+          this.sectors = secteurs;
+        },
+        (error: any) => {
+          console.log(error);
+        }
     );
 
   }
@@ -69,32 +69,32 @@ export class ListerPersonneComponent {
 
   getProjetDetails() {
     this.clientService.getFiche().subscribe(
-      (resp) => {
-        console.log(resp);
-        // @ts-ignore
-        this.studentDetails = resp;
+        (resp) => {
+          console.log(resp);
+          // @ts-ignore
+          this.studentDetails = resp;
 
-        // Assuming the project details include the client details
-        // @ts-ignore
-        if (this.studentDetails && this.studentDetails.length > 0) {
-          this.selectedProjet = this.studentDetails[0]; // Select the first project
+          // Assuming the project details include the client details
+          // @ts-ignore
+          if (this.studentDetails && this.studentDetails.length > 0) {
+            this.selectedProjet = this.studentDetails[0]; // Select the first project
+          }
+        },
+        (err) => {
+          console.log(err);
         }
-      },
-      (err) => {
-        console.log(err);
-      }
     );
   }
 
   deleteProjet(client: any){
     // @ts-ignore
     this.clientService.deleteFiche(client.id).subscribe(
-      (resp)=>{
-        console.log(resp);
-        alert("Projet a bien été supprimé");
-        this.getProjetDetails();
-      },
-      (err)=> console.log(err)
+        (resp)=>{
+          console.log(resp);
+          alert("Projet a bien été supprimé");
+          this.getProjetDetails();
+        },
+        (err)=> console.log(err)
     );
   }
   get paginatedItems(): any[] {

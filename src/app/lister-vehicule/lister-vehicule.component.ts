@@ -3,13 +3,16 @@ import {AjouterPoliceTService} from "../_services/ajouter-police-t.service";
 import {VehiculeService} from "../_services/vehicule.service";
 import {PersonneService} from "../_services/personne.service";
 import { WebSocketServiceService } from '../_services/web-socket-service.service';
-
+import { ToastrService } from 'ngx-toastr';
+import {NotificationServiceService} from "../notification-service.service";
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-lister-vehicule',
   templateUrl: './lister-vehicule.component.html',
   styleUrl: './lister-vehicule.component.css'
 })
 export class ListerVehiculeComponent {
+  rapportMode: boolean[] = [];
   notifications: any[] = [];
   studentDetails =null;
   itemsPerPage: number = 8;
@@ -47,11 +50,32 @@ export class ListerVehiculeComponent {
   };
   showSuccessAlert: boolean = false;
 
-  constructor(private clientService: VehiculeService,private webSocketService: WebSocketServiceService) {
+  constructor(private clientService: VehiculeService,private webSocketService: WebSocketServiceService,
+              private toastr: ToastrService,private notificationService: NotificationServiceService,private router:Router) {
     this.getProjetDetails();
   }
 
   ngOnInit(): void {
+    this.webSocketService.connect();
+    // Listen for notifications from the WebSocket service
+    this.webSocketService.listenForNotifications().subscribe((data: any) => {
+      console.log('Notification received:', data);
+
+      this.notifications.unshift(data);
+      // Display the information in your Angular component as needed
+      // this.displayAlert(data.message);
+      const notificationMessage = `${data.message} - License Plate: ${data.license_plate}`;
+      this.toastr.info(notificationMessage, 'Notification');
+      // Send the notification to the backend to save in the database
+      this.notificationService.sendNotification(data).subscribe(
+          (response: any) => {
+          console.log('Notification sent to backend successfully:', response);
+        },
+          (error: any) => {
+          console.error('Error sending notification to backend:', error);
+        }
+      );
+    });
     setTimeout(() => {
       this.showSuccessAlert = false;
     }, 5000);
@@ -65,15 +89,7 @@ export class ListerVehiculeComponent {
       }
     );
     // Connect to the WebSocket server when the component is initialized
-    this.webSocketService.connect();
-    // Listen for notifications from the WebSocket service
-    this.webSocketService.listenForNotifications().subscribe((data: any) => {
-      console.log('Notification received:', data);
-      this.notifications.unshift(data);
-      // Display the information in your Angular component as needed
-      this.displayAlert(data.message);
 
-    });
 
   }
   private displayAlert(message: string): void {
@@ -136,33 +152,13 @@ export class ListerVehiculeComponent {
     // @ts-ignore
     return Math.ceil(this.studentDetails.length / this.itemsPerPage);
   }
-  /*  edit(client: any) {
-      this.clientToUpdate.id=client.id;
-      // When editing, copy the client's data to clientToUpdate
-      this.clientToUpdate.code = client.code;
-      this.clientToUpdate.date_Debut = client.date_Debut.split('T')[0];
-      this.clientToUpdate.date_Fin = client.date_Fin.split('T')[0];
+  toggleRapportMode(event: any, index: number) {
+    // Basculer l'état du mode rapport pour la ligne spécifique
+    this.rapportMode[index] = event.target.checked;
+  }
+  ecrireRapport(vehicule: any) {
+    this.router.navigate(['/nouveau-rapport']);
+  }
 
-      this.clientToUpdate.creeLe = client.creeLe.split('T')[0];
-      this.clientToUpdate.statutProjet = client.statutProjet;
-      this.clientToUpdate.budget = client.budget;
-    }
-    updateClient(registerForm: NgForm): void{
-      const formData = { ...registerForm.value,
-        code: registerForm.value.code,
-
-      };
-      this.projetService.updateProjet(formData).subscribe(
-        (resp)=>{
-
-          console.log(resp);
-          alert("Client a bien été modifier");
-          this.getProjetDetails();
-        },
-        (err)=>{
-          console.log(err);
-        }
-      )
-    }*/
 
 }

@@ -1,0 +1,15 @@
+<div >
+    <!-- Formulaire du rapport -->
+    <form [formGroup]="rapportForm" (ngSubmit)="submitRapport()">
+
+        <div>
+            <label for="action">Action :</label>
+            <input type="text" id="action" formControlName="action">
+        </div>
+        <div>
+            <label for="description">Description :</label>
+            <textarea id="description" formControlName="description"></textarea>
+        </div>
+        <button type="submit">Soumettre</button>
+    </form>
+</div>

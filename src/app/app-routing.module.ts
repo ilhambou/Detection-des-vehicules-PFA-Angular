@@ -14,8 +14,10 @@ import {PersonneComponent} from "./personne/personne.component";
 import {VehiculeComponent} from "./vehicule/vehicule.component";
 import {ListerVehiculeComponent} from "./lister-vehicule/lister-vehicule.component";
 import {ListerPersonneComponent} from "./lister-personne/lister-personne.component";
+import {RapportComponent} from "./rapport/rapport.component";
 
 const  routes: Routes=[
+  { path: 'nouveau-rapport', component: RapportComponent, canActivate:[AuthGuard],data:{roles:['Admin','User']} },
   {path:'home',component:HomeComponent},
   {path:'admin',component:AdminComponent,canActivate:[AuthGuard],data:{roles:['Admin']}},
   {path:'user',component:UserComponent,canActivate:[AuthGuard],data:{roles:['User']}},
