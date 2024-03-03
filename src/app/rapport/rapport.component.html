@@ -1,15 +1,38 @@
-<div >
-    <!-- Formulaire du rapport -->
-    <form [formGroup]="rapportForm" (ngSubmit)="submitRapport()">
+<div class="form_wrapper mt-4" style="align-items:center; width: 150vh;">
+    <div class="form_container">
+        <div class="title_container">
+            <h2 class="text-center">Ajouter Rapport</h2>
+        </div>
+        <div class="row clearfix">
+            <div>
+                <form [formGroup]="rapportForm" (ngSubmit)="submitRapport()">
+                    <div class="form-group">
+                        <label for="action">Action :</label>
+                        <input type="text" formControlName="action" id="action" class="form-control" placeholder="Action">
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description :</label>
+                        <textarea formControlName="description" id="description" class="form-control" placeholder="Description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <button type="submit" class="btn btn-warning btn-lg mt-5 ms-2">Soumettre</button>
+                            <button *ngIf="rapportSoumis" class="btn btn-warning btn-lg mt-5 ms-2" (click)="afficherRapport()">Afficher le rapport soumis</button>
 
-        <div>
-            <label for="action">Action :</label>
-            <input type="text" id="action" formControlName="action">
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div>
-            <label for="description">Description :</label>
-            <textarea id="description" formControlName="description"></textarea>
+    </div>
+   
+    <div *ngIf="rapportAffiche">
+        
+        <div class="row clearfix">
+            <div>
+                <p>Action: {{ rapportSoumis.action }}</p>
+                <p>Description: {{ rapportSoumis.description }}</p>
+            </div>
         </div>
-        <button type="submit">Soumettre</button>
-    </form>
+    </div>
 </div>

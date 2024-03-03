@@ -13,7 +13,6 @@
     <ng-container *ngIf="fiches.length > 0">
       <tr>
         <th>ID</th>
-        <th *ngIf="fiches[0].personne">CIN</th>
         <th *ngIf="fiches[0].personne">Nom</th>
         <th *ngIf="fiches[0].personne">Prenom</th>
         <th *ngIf="fiches[0].personne">Adresse</th>
@@ -23,13 +22,14 @@
         <th *ngIf="fiches[0].personne">Sexe</th>
         <th>Vehicules</th>
         <th style="font-weight: bold; color: #b80434">Action</th>
+        <th style="font-weight: bold; color: #1784f1"> Action Modifier</th>
+            <th style="font-weight: bold; color: #b80434"> Action Supprimer</th>
       </tr>
     </ng-container>
     </thead>
     <tbody>
       <tr *ngFor="let fiche of fiches">
         <td>{{ fiche.id }}</td>
-        <td>{{ fiche.personne?.CIN }}</td>
         <td>{{ fiche.personne?.nom }}</td>
         <td>{{ fiche.personne?.prenom }}</td>
         <td>{{ fiche.personne?.adresse }}</td>
@@ -47,6 +47,24 @@
             détails
           </button>
         </td>
+        <td>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+              <path d="M12.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1.5 1.5 0 0 1-1.088.352l-3.5-1A1.5 1.5 0 0 1 1 11.5v-3.793l9-9zM14.793 2.5 12 5.293 10.707 4l2.793-2.793a.5.5 0 0 1 .707 0l1.5 1.5a.5.5 0 0 1 0 .707z"/>
+              <path fill-rule="evenodd" d="M3.146 13.354a.5.5 0 0 0-.146.353v1.5a.5.5 0 0 0 .5.5h1.5a.5.5 0 0 0 .353-.146L12.354 9.5a.5.5 0 0 0 0-.707l-1.5-1.5a.5.5 0 0 0-.707 0L3.146 13.354zM4 14h-1v-1l7.5-7.5 1 1L4 14z"/>
+            </svg>
+            Modifier
+          </button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-danger">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+              <path d="M1 3.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-1v9a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-9H1a.5.5 0 0 1-.5-.5zM4.5 1h7a.5.5 0 0 1 .5.5v1h-8v-1a.5.5 0 0 1 .5-.5zm4 5a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5zm-3 0a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 1 .5.5zm2 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 1 0 1z"/>
+            </svg>
+            Supprimer
+          </button>
+        </td>
+       
 
       </tr>
     </tbody>
